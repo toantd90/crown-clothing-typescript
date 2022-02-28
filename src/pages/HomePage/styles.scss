@@ -1,0 +1,39 @@
+@mixin center-flex-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.homepage {
+  padding: 20px 80px;
+}
+
+.directory-menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.menu-item {
+  @include center-flex-box;
+
+  flex: 1;
+  border: solid 1px  black;
+  min-width: 30%;
+  height: 240px;
+  margin: 0 7.5px 15px;
+}
+
+.content {
+  @include center-flex-box;
+
+  flex-direction: column;
+
+  .title {
+    font-weight: bold;
+  }
+
+  .subTitle {
+    font-weight: lighter;
+  }
+}
