@@ -23,9 +23,10 @@
     "paths": {
       "components": ["components"],
       "pages": ["pages"],
-    }
+    },
   },
   "include": [
-    "src"
+    "src",
+    "declarations.d.ts"
   ]
 }

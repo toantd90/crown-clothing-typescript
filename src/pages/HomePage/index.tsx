@@ -1,12 +1,10 @@
 import React from 'react';
-import { MenuItem } from 'components';
-import './styles.scss';
+import Directory from 'components/Directory';
+import styles from './styles.module.scss';
 
 const HomePage = () => (
-  <div className='homepage'>
-    <div className='directory-menu'>
-      <MenuItem />
-    </div>
+  <div className={styles.homepage}>
+    <Directory />
   </div>
 );
 
