@@ -1,18 +1,20 @@
-import React from 'react';
-
+import { MenuItem as MenuItemType } from 'constants/menuItem';
 import styles from './styles.module.scss';
 
-type MenuItemProps = {
-  title: string;
+type Props = {
+  data: MenuItemType;
 };
 
-const MenuItem = ({ title }: MenuItemProps) => (
-  <div className={styles.menuItem}>
-    <div className={styles.content}>
-      <h1 className={styles.title}>{title}</h1>
-      <span className={styles.subTitle}>SHOP NOW</span>
+const MenuItem = ({ data }: Props) => {
+  const { title } = data;
+  return (
+    <div className={styles.menuItem}>
+      <div className={styles.content}>
+        <h1 className={styles.title}>{title}</h1>
+        <span className={styles.subTitle}>SHOP NOW</span>
+      </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default MenuItem;
