@@ -4,7 +4,7 @@ import { MenuItem } from 'components';
 
 import { MenuItem as MenuItemType } from 'constants/menuItem';
 
-import styles from './styles.module.scss';
+import styles from './directory.module.scss';
 
 const sections = [
   {
