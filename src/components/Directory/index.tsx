@@ -47,7 +47,7 @@ const Directory = () => {
   return (
     <div className={styles.directoryMenu}>
       {menuItems.map((menuItem) => (
-        <MenuItem data={menuItem} />
+        <MenuItem key={menuItem.id} data={menuItem} />
       ))}
     </div>
   );

@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
 import HomePage from 'pages/HomePage';
 import './App.css';
@@ -33,19 +33,25 @@ const WomenPage = () => (
   </div>
 );
 
-function App() {
-  return (
-    <div>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='shop/hats' element={<HatsPage />} />
-        <Route path='shop/jackets' element={<JacketsPage />} />
-        <Route path='shop/sneakers' element={<SneakersPage />} />
-        <Route path='shop/mens' element={<MenPage />} />
-        <Route path='shop/womens' element={<WomenPage />} />
-      </Routes>
-    </div>
-  );
-}
+const App = () => {
+  let routes = useRoutes([
+    { path: '/', element: <HomePage /> },
+    { path: 'shop/hats', element: <HatsPage /> },
+    { path: 'shop/jackets', element: <JacketsPage /> },
+    { path: 'shop/sneakers', element: <SneakersPage /> },
+    { path: 'shop/mens', element: <MenPage /> },
+    { path: 'shop/womens', element: <WomenPage /> },
+  ]);
 
-export default App;
+  return routes;
+};
+
+const AppWrapper = () => {
+  return (
+    <Router>
+      <App />
+    </Router>
+  );
+};
+
+export default AppWrapper;
