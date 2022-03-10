@@ -1,8 +1,11 @@
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
 import HomePage from 'pages/HomePage';
-import './App.css';
 import ShopPage from 'pages/ShopPage';
+
+import { Header } from 'components';
+
+import './App.css';
 
 const App = () => {
   let routes = useRoutes([
@@ -15,9 +18,12 @@ const App = () => {
 
 const AppWrapper = () => {
   return (
-    <Router>
-      <App />
-    </Router>
+    <div>
+      <Router>
+        <Header />
+        <App />
+      </Router>
+    </div>
   );
 };
 
