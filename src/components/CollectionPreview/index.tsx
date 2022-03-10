@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { CollectionItem } from 'components';
+
 import styles from './collectionPreview.module.scss';
 
 type Props = {
@@ -14,8 +16,8 @@ const CollectionPreview = ({ title, items }: Props) => {
       <div className={styles.preview}>
         {items
           .filter((_, index) => index < 4)
-          .map(({ id, name }) => (
-            <div key={id}>{name}</div>
+          .map(({ id, ...rest }) => (
+            <CollectionItem key={id} {...rest} />
           ))}
       </div>
     </div>

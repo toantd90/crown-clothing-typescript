@@ -10,8 +10,8 @@ const ShopPage = () => {
   const [collections, setCollections] = useState(SHOP_DATA);
   return (
     <div className={styles.shopPage}>
-      {collections.map(({ id, ...otherCollectionProps }) => (
-        <CollectionPreview key={id} {...otherCollectionProps} />
+      {collections.map(({ id, ...rest }) => (
+        <CollectionPreview key={id} {...rest} />
       ))}
     </div>
   );
