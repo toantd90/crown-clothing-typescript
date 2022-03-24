@@ -2,7 +2,7 @@ import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
 import HomePage from 'pages/HomePage';
 import ShopPage from 'pages/ShopPage';
-import SignIn from 'pages/SignIn';
+import Authentication from 'pages/Authentication';
 
 import { Header } from 'components';
 
@@ -12,7 +12,7 @@ const App = () => {
   let routes = useRoutes([
     { path: '/', element: <HomePage /> },
     { path: 'shop', element: <ShopPage /> },
-    { path: 'sign-in', element: <SignIn /> },
+    { path: 'auth', element: <Authentication /> },
   ]);
 
   return routes;

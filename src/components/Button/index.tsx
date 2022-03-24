@@ -5,6 +5,7 @@ type Props = {
   children?: ReactNode;
   buttonType?: 'google' | 'inverted';
   type?: 'button' | 'submit' | 'reset';
+  onClick?: () => void;
 };
 
 const BUTTON_TYPE_CLASSES = {

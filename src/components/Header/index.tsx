@@ -13,7 +13,7 @@ const HEADER_OPTIONS = [
   },
   {
     text: 'SIGN IN',
-    to: '/sign-in',
+    to: '/auth',
   },
 ];
 

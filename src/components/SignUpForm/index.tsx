@@ -1,5 +1,5 @@
-import { Button, FormInput } from 'components';
 import { ChangeEvent, FormEvent, useState } from 'react';
+import { Button, FormInput } from 'components';
 
 import {
   createAuthUserWithEmailAndPassword,
@@ -50,8 +50,8 @@ const SignUpForm = () => {
 
   return (
     <div className={styles.signUpFormContainer}>
-      <h2>Don't have an account </h2>
-      <h1>Sign up with your email and password</h1>
+      <h2>Don't have an account?</h2>
+      <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FormInput
           label='Display Name'
