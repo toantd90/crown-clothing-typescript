@@ -6,6 +6,7 @@ import {
   getAuth,
   signInWithRedirect,
   signInWithPopup,
+  signOut,
   GoogleAuthProvider,
   UserCredential,
   createUserWithEmailAndPassword,
@@ -81,6 +82,10 @@ export const signInAuthUserWithEmailAndPassword = async (
   email: string,
   password: string,
 ) => {
-  if (!email || !password) return;
+  if (!email || !password) return {} as UserCredential;
   return await signInWithEmailAndPassword(auth, email, password);
+};
+
+export const signOutAuthUser = async () => {
+  return await signOut(auth);
 };
