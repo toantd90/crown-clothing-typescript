@@ -4,18 +4,12 @@ import { Link } from 'react-router-dom';
 import { UserContext } from 'contexts/users';
 import { isObjectEmpty } from 'utils/object';
 import { signOutAuthUser } from 'utils/firebase';
-import { UserCredential } from 'firebase/auth';
 
 import { ReactComponent as Logo } from 'assets/crown.svg';
 import styles from './header.module.scss';
 
 const Header = () => {
-  const { currentUser, setCurrentUser } = useContext(UserContext);
-
-  const handleSignOut = async () => {
-    await signOutAuthUser;
-    setCurrentUser({} as UserCredential);
-  };
+  const { currentUser } = useContext(UserContext);
 
   const HEADER_OPTIONS = [
     {
@@ -35,7 +29,7 @@ const Header = () => {
       text: 'SIGN OUT',
       to: '/auth',
       needSignIn: true,
-      onClick: handleSignOut,
+      onClick: signOutAuthUser,
     },
   ];
 

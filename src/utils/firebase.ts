@@ -9,8 +9,11 @@ import {
   signOut,
   GoogleAuthProvider,
   UserCredential,
+  NextOrObserver,
+  User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
+  onAuthStateChanged,
 } from 'firebase/auth';
 
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
@@ -43,10 +46,9 @@ export const signInWithGoogleRedirect = () =>
 export const db = getFirestore();
 
 export const createUserDocumentFromAuth = async (
-  userAuth: UserCredential,
+  user: User,
   additionalInformation = {},
 ) => {
-  const { user } = userAuth;
   if (!user) return;
   const userDocRef = doc(db, 'users', user.uid);
 
@@ -88,4 +90,8 @@ export const signInAuthUserWithEmailAndPassword = async (
 
 export const signOutAuthUser = async () => {
   return await signOut(auth);
+};
+
+export const onAuthStateChangedListener = (callback: NextOrObserver<User>) => {
+  onAuthStateChanged(auth, callback);
 };
