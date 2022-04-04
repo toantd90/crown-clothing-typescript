@@ -5,7 +5,6 @@ import { User } from 'firebase/auth';
 import {
   createUserDocumentFromAuth,
   onAuthStateChangedListener,
-  signOutAuthUser,
 } from 'utils/firebase';
 
 const useValue = () => {

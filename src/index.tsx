@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import { UserProvider } from 'contexts/users';
+import { ProductsProvider } from 'contexts/products';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
@@ -10,7 +11,9 @@ import './index.scss';
 ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
-      <App />
+      <ProductsProvider>
+        <App />
+      </ProductsProvider>
     </UserProvider>
   </React.StrictMode>,
   document.getElementById('root'),

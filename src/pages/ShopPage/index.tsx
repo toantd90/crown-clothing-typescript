@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import { useContext } from 'react';
 
-import { CollectionPreview } from 'components';
-
-import { SHOP_DATA } from './shop.data';
+import { ProductCard } from 'components';
+import { ProductsContext } from 'contexts/products';
 
 import styles from './shopPage.module.scss';
 
 const ShopPage = () => {
-  const [collections, setCollections] = useState(SHOP_DATA);
+  const { products } = useContext(ProductsContext);
+
   return (
-    <div className={styles.shopPage}>
-      {collections.map(({ id, ...rest }) => (
-        <CollectionPreview key={id} {...rest} />
+    <div className={styles.productsContainer}>
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </div>
   );
