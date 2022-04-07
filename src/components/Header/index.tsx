@@ -1,7 +1,10 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
+import { CartIcon, CartDropdown } from 'components';
+import { CartContext } from 'contexts/cart';
 import { UserContext } from 'contexts/users';
+
 import { isObjectEmpty } from 'utils/object';
 import { signOutAuthUser } from 'utils/firebase';
 
@@ -11,14 +14,12 @@ import styles from './header.module.scss';
 const Header = () => {
   const { currentUser } = useContext(UserContext);
 
+  const { isCartOpen } = useContext(CartContext);
+
   const HEADER_OPTIONS = [
     {
       text: 'SHOP',
       to: '/shop',
-    },
-    {
-      text: 'CONTACT',
-      to: '/contact',
     },
     {
       text: 'SIGN IN',
@@ -50,7 +51,9 @@ const Header = () => {
             ) : null}
           </div>
         ))}
+        <CartIcon />
       </div>
+      {isCartOpen && <CartDropdown />}
     </div>
   );
 };

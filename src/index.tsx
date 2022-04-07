@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { UserProvider } from 'contexts/users';
-import { ProductsProvider } from 'contexts/products';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+
+import { CartProvider } from 'contexts/cart';
+import { UserProvider } from 'contexts/users';
+import { ProductsProvider } from 'contexts/products';
 
 import './index.scss';
 
@@ -12,7 +14,9 @@ ReactDOM.render(
   <React.StrictMode>
     <UserProvider>
       <ProductsProvider>
-        <App />
+        <CartProvider>
+          <App />
+        </CartProvider>
       </ProductsProvider>
     </UserProvider>
   </React.StrictMode>,

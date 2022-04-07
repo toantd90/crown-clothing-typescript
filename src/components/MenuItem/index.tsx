@@ -22,7 +22,7 @@ const MenuItem = ({ data }: Props) => {
         style={{ backgroundImage: `url(${imageUrl})` }}
       />
       <div className={styles.content}>
-        <h1 className={styles.title}>{title}</h1>
+        <h2 className={styles.title}>{title}</h2>
         <span className={styles.subTitle}>SHOP NOW</span>
       </div>
     </div>
