@@ -5,13 +5,13 @@ import { Product } from 'Product-Types';
 import SHOP_DATA from 'shop-data.json';
 
 const useValue = () => {
-  const [products, setProducts] = useState<Array<Product>>(SHOP_DATA);
+  const [products, setProducts] = useState<Product[]>(SHOP_DATA);
 
   return { products, setProducts };
 };
 
 export const ProductsContext = createContext({
-  products: [] as Array<Product>,
+  products: [] as Product[],
 } as ReturnType<typeof useValue>);
 
 export const ProductsProvider = ({ children }: React.PropsWithChildren<{}>) => {

@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import CartItem from './CartItem';
 import CartDropdown from './CartDropdown';
 import CartIcon from './CartIcon';
 import ProductCard from './ProductCard';
@@ -12,6 +13,7 @@ import MenuItem from './MenuItem';
 export {
   // prettier-ignore
   /* PLOP_INJECT_EXPORT */
+  CartItem,
   CartDropdown,
   CartIcon,
   ProductCard,

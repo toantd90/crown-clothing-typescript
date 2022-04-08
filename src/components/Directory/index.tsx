@@ -42,7 +42,7 @@ const sections = [
 ];
 
 const Directory = () => {
-  const [menuItems, setMenuItems] = useState<Array<MenuItemType>>(sections);
+  const [menuItems, setMenuItems] = useState<MenuItemType[]>(sections);
 
   return (
     <div className={styles.directoryMenu}>

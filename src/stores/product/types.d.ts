@@ -5,4 +5,8 @@ declare module 'Product-Types' {
     price: number;
     imageUrl: string;
   };
+
+  export type CartItem = Product & {
+    quantity: number;
+  };
 }
