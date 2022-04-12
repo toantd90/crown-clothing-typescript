@@ -3,20 +3,20 @@ import React, { createContext, useState } from 'react';
 import { CartItem, Product } from 'Product-Types';
 
 const addCartItem = (cartItems: CartItem[], productToAdd: Product) => {
-  const cartItemIndex = cartItems.findIndex(
+  const cartItem = cartItems.find(
     (cartItem) => cartItem.id === productToAdd.id,
   );
 
-  if (cartItemIndex === -1) {
+  if (!cartItem) {
     return [...cartItems, { ...productToAdd, quantity: 1 }];
   }
 
-  return cartItems.map((cartItem) =>
-    cartItem.id !== cartItemIndex
-      ? cartItem
+  return cartItems.map((item) =>
+    item.id !== cartItem.id
+      ? item
       : {
-          ...cartItem,
-          quantity: cartItem.quantity + 1,
+          ...item,
+          quantity: item.quantity + 1,
         },
   );
 };
@@ -26,15 +26,18 @@ const useValue = () => {
   const [cartItems, setCartItems] = useState<CartItem[]>([] as CartItem[]);
   const addItemToCart = (productToAdd: Product) => {
     setCartItems(addCartItem(cartItems, productToAdd));
+    setCardCount(cartCount + 1);
   };
+  const [cartCount, setCardCount] = useState<number>(0);
 
-  return { isCartOpen, setIsCartOpen, cartItems, addItemToCart };
+  return { isCartOpen, setIsCartOpen, cartItems, addItemToCart, cartCount };
 };
 
 export const CartContext = createContext({} as ReturnType<typeof useValue>);
 
 export const CartProvider = ({ children }: React.PropsWithChildren<{}>) => {
-  const { isCartOpen, setIsCartOpen, cartItems, addItemToCart } = useValue();
+  const { isCartOpen, setIsCartOpen, cartItems, addItemToCart, cartCount } =
+    useValue();
 
   return (
     <CartContext.Provider
@@ -43,6 +46,7 @@ export const CartProvider = ({ children }: React.PropsWithChildren<{}>) => {
         setIsCartOpen,
         cartItems,
         addItemToCart,
+        cartCount,
       }}
     >
       {children}
