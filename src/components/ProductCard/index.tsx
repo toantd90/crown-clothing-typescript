@@ -14,9 +14,9 @@ type Props = {
 
 const ProductCard = ({ product }: Props) => {
   const { name, price, imageUrl } = product;
-  const { addItemToCart } = useContext(CartContext);
+  const { cartItemChange } = useContext(CartContext);
 
-  const handleAddProductToCart = () => addItemToCart(product);
+  const handleAddProductToCart = () => cartItemChange(product);
 
   return (
     <div className={styles.productCardContainer}>

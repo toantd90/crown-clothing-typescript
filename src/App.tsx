@@ -3,6 +3,7 @@ import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 import HomePage from 'pages/HomePage';
 import ShopPage from 'pages/ShopPage';
 import Authentication from 'pages/Authentication';
+import Checkout from 'pages/Checkout';
 
 import { Header } from 'components';
 
@@ -13,6 +14,7 @@ const App = () => {
     { path: '/', element: <HomePage /> },
     { path: 'shop', element: <ShopPage /> },
     { path: 'auth', element: <Authentication /> },
+    { path: 'checkout', element: <Checkout /> },
   ]);
 
   return routes;
