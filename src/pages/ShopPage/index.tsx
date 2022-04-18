@@ -1,19 +1,26 @@
 import { useContext } from 'react';
 
 import { ProductCard } from 'components';
-import { ProductsContext } from 'contexts/products';
+import { CategoriesContext } from 'contexts/categories';
 
 import styles from './shopPage.module.scss';
 
 const ShopPage = () => {
-  const { products } = useContext(ProductsContext);
+  const { categoriesMap } = useContext(CategoriesContext);
 
   return (
-    <div className={styles.productsContainer}>
-      {products.map((product) => (
-        <ProductCard key={product.id} product={product} />
+    <>
+      {Object.keys(categoriesMap).map((title: string) => (
+        <>
+          <h2>{title.toUpperCase()}</h2>
+          <div className={styles.productsContainer}>
+            {categoriesMap[title].slice(0, 4).map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+          </div>
+        </>
       ))}
-    </div>
+    </>
   );
 };
 
