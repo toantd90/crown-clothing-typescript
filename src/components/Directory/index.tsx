@@ -1,12 +1,10 @@
-import { useState } from 'react';
-
-import { MenuItem } from 'components';
+import { DirectoryItem } from 'components';
 
 import { MenuItem as MenuItemType } from 'constants/menuItem';
 
 import styles from './directory.module.scss';
 
-const sections = [
+const categories = [
   {
     title: 'hats',
     imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
@@ -42,12 +40,10 @@ const sections = [
 ];
 
 const Directory = () => {
-  const [menuItems, setMenuItems] = useState<MenuItemType[]>(sections);
-
   return (
     <div className={styles.directoryMenu}>
-      {menuItems.map((menuItem) => (
-        <MenuItem key={menuItem.id} data={menuItem} />
+      {categories.map((category: MenuItemType) => (
+        <DirectoryItem key={category.id} data={category} />
       ))}
     </div>
   );

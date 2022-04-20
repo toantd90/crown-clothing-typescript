@@ -1,21 +1,24 @@
 import { useNavigate } from 'react-router-dom';
 
 import { MenuItem as MenuItemType } from 'constants/menuItem';
-import styles from './menuItem.module.scss';
+
+import styles from './directoryItem.module.scss';
 
 type Props = {
   data: MenuItemType;
 };
 
-const MenuItem = ({ data }: Props) => {
+const DirectoryItem = ({ data }: Props) => {
   const { title, imageUrl, size, linkUrl } = data;
 
   const navigate = useNavigate();
 
+  const handleOnNavigate = () => navigate(linkUrl);
+
   return (
     <div
-      className={`${styles.menuItem} ${size ? styles[size] : ''}`}
-      onClick={() => navigate(linkUrl)}
+      className={`${styles.directoryItemContainer} ${size ? styles[size] : ''}`}
+      onClick={handleOnNavigate}
     >
       <div
         className={styles.backgroundImage}
@@ -29,4 +32,4 @@ const MenuItem = ({ data }: Props) => {
   );
 };
 
-export default MenuItem;
+export default DirectoryItem;

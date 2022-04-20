@@ -2,7 +2,7 @@ import { useContext } from 'react';
 
 import { CartContext } from 'contexts/cart';
 
-import Button from 'components/Button';
+import { Button } from 'components';
 
 import { Product } from 'Product-Types';
 
