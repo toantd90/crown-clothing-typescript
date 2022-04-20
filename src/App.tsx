@@ -12,7 +12,7 @@ import './App.scss';
 const App = () => {
   let routes = useRoutes([
     { path: '/', element: <HomePage /> },
-    { path: 'shop', element: <ShopPage /> },
+    { path: 'shop/*', element: <ShopPage /> },
     { path: 'auth', element: <Authentication /> },
     { path: 'checkout', element: <Checkout /> },
   ]);
