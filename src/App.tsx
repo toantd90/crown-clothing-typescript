@@ -1,4 +1,13 @@
+import { useEffect } from 'react';
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
+
+import {
+  createUserDocumentFromAuth,
+  onAuthStateChangedListener,
+} from 'utils/firebase';
+
+import { useAppDispatch } from 'store/hooks';
+import { setCurrentUser } from 'store/user/userSlice';
 
 import HomePage from 'pages/HomePage';
 import ShopPage from 'pages/ShopPage';
@@ -21,6 +30,17 @@ const App = () => {
 };
 
 const AppWrapper = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const unsubcribe = onAuthStateChangedListener((user) => {
+      if (user) createUserDocumentFromAuth(user);
+      dispatch(setCurrentUser(user));
+    });
+
+    return unsubcribe;
+  }, []);
+
   return (
     <div>
       <Router>

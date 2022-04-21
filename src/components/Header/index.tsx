@@ -1,18 +1,21 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import { signOutAuthUser } from 'utils/firebase';
+
+import { CartContext } from 'contexts/cart';
+
+import { useAppSelector } from 'store/hooks';
+import { selectCurrentUser } from 'store/user/userSlice';
 
 import { CartIcon, CartDropdown } from 'components';
-import { CartContext } from 'contexts/cart';
-import { UserContext } from 'contexts/users';
 
 import { isObjectEmpty } from 'utils/object';
-import { signOutAuthUser } from 'utils/firebase';
 
 import { ReactComponent as Logo } from 'assets/crown.svg';
 import styles from './header.module.scss';
 
 const Header = () => {
-  const { currentUser } = useContext(UserContext);
+  const currentUser = useAppSelector(selectCurrentUser);
 
   const { isCartOpen } = useContext(CartContext);
 
