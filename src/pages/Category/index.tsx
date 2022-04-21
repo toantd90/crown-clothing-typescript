@@ -1,16 +1,18 @@
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+
+import { selectCategoryMap } from 'store/category/categorySlice';
+import { useAppSelector } from 'store/hooks';
 
 import { ProductCard } from 'components';
 
-import { CategoriesContext } from 'contexts/categories';
 import { Product } from 'Product-Types';
 
 import styles from './category.module.scss';
 
 const Category = () => {
   const { category } = useParams();
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useAppSelector(selectCategoryMap);
   const [products, setProducts] = useState<Product[]>(
     categoriesMap[category || ''],
   );

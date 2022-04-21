@@ -1,15 +1,19 @@
-import { useContext } from 'react';
+import { selectCategoryMap } from 'store/category/categorySlice';
+import { useAppSelector } from 'store/hooks';
 
 import { CategoryPreview } from 'components';
-import { CategoriesContext } from 'contexts/categories';
 
 const CategoriesPreview = () => {
-  const { categoriesMap } = useContext(CategoriesContext);
+  const categoriesMap = useAppSelector(selectCategoryMap);
 
   return (
     <>
       {Object.keys(categoriesMap).map((title: string) => (
-        <CategoryPreview title={title} products={categoriesMap[title]} />
+        <CategoryPreview
+          key={title}
+          title={title}
+          products={categoriesMap[title]}
+        />
       ))}
     </>
   );

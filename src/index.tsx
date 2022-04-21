@@ -7,18 +7,15 @@ import reportWebVitals from './reportWebVitals';
 
 import { store } from 'store/store';
 import { CartProvider } from 'contexts/cart';
-import { CategoriesProvider } from 'contexts/categories';
 
 import './index.scss';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <CategoriesProvider>
-        <CartProvider>
-          <App />
-        </CartProvider>
-      </CategoriesProvider>
+      <CartProvider>
+        <App />
+      </CartProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
