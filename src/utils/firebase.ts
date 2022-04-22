@@ -120,10 +120,7 @@ export const signInAuthUserWithEmailAndPassword = async (
   return await signInWithEmailAndPassword(auth, email, password);
 };
 
-export const signOutAuthUser = async () => {
-  return await signOut(auth);
-};
+export const signOutAuthUser = async () => await signOut(auth);
 
-export const onAuthStateChangedListener = (callback: NextOrObserver<User>) => {
+export const onAuthStateChangedListener = (callback: NextOrObserver<User>) =>
   onAuthStateChanged(auth, callback);
-};

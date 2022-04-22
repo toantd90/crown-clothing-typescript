@@ -24,17 +24,21 @@ export const categorySlice = createSlice({
 export const { setCategories } = categorySlice.actions;
 
 // selectors
-export const selectCategoryMap = createSelector(
-  (state: RootState) => {
-    console.log('category map selector');
+const selectCategory = (state: RootState) => state.category;
 
-    return state.category.categories.reduce((acc, category) => {
+const selectCategories = createSelector(
+  [selectCategory],
+  (categorySlice) => categorySlice.categories,
+);
+
+export const selectCategoryMap = createSelector(
+  [selectCategories],
+  (categories) =>
+    categories.reduce((acc, category) => {
       const { title, items } = category;
       acc[title.toLowerCase()] = items;
       return acc;
-    }, {} as CategoryMap);
-  },
-  (category) => category,
+    }, {} as CategoryMap),
 );
 
 export default categorySlice.reducer;

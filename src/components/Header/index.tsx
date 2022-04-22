@@ -17,41 +17,24 @@ const Header = () => {
 
   const { isCartOpen } = useContext(CartContext);
 
-  const HEADER_OPTIONS = [
-    {
-      text: 'SHOP',
-      to: '/shop',
-    },
-    {
-      text: 'SIGN IN',
-      to: '/auth',
-      needSignIn: false,
-    },
-    {
-      text: 'SIGN OUT',
-      to: '/auth',
-      needSignIn: true,
-      onClick: signOutAuthUser,
-    },
-  ];
-
   return (
     <div className={styles.header}>
       <Link className={styles.logoContainer} to='/'>
         <Logo className={styles.logo} />
       </Link>
       <div className={styles.options}>
-        {HEADER_OPTIONS.map(({ text, to, needSignIn, onClick }, index) => (
-          <div key={index}>
-            {needSignIn === undefined ||
-            (isUserSignedIn && !needSignIn) ||
-            (!isUserSignedIn && needSignIn) ? (
-              <Link className={styles.option} to={to || ''} onClick={onClick}>
-                {text}
-              </Link>
-            ) : null}
+        <Link className={styles.option} to='/shop'>
+          SHOP
+        </Link>
+        {!isUserSignedIn ? (
+          <Link className={styles.option} to={'/auth'}>
+            SIGN IN
+          </Link>
+        ) : (
+          <div className={styles.option} onClick={signOutAuthUser}>
+            SIGN OUT
           </div>
-        ))}
+        )}
         <CartIcon />
       </div>
       {isCartOpen && <CartDropdown />}
