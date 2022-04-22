@@ -5,17 +5,15 @@ import { signOutAuthUser } from 'utils/firebase';
 import { CartContext } from 'contexts/cart';
 
 import { useAppSelector } from 'store/hooks';
-import { selectCurrentUser } from 'store/user/userSlice';
+import { selectIsUserSignedIn } from 'store/user/userSlice';
 
 import { CartIcon, CartDropdown } from 'components';
-
-import { isObjectEmpty } from 'utils/object';
 
 import { ReactComponent as Logo } from 'assets/crown.svg';
 import styles from './header.module.scss';
 
 const Header = () => {
-  const currentUser = useAppSelector(selectCurrentUser);
+  const isUserSignedIn = useAppSelector(selectIsUserSignedIn);
 
   const { isCartOpen } = useContext(CartContext);
 
@@ -46,8 +44,8 @@ const Header = () => {
         {HEADER_OPTIONS.map(({ text, to, needSignIn, onClick }, index) => (
           <div key={index}>
             {needSignIn === undefined ||
-            (isObjectEmpty(currentUser) && !needSignIn) ||
-            (!isObjectEmpty(currentUser) && needSignIn) ? (
+            (isUserSignedIn && !needSignIn) ||
+            (!isUserSignedIn && needSignIn) ? (
               <Link className={styles.option} to={to || ''} onClick={onClick}>
                 {text}
               </Link>

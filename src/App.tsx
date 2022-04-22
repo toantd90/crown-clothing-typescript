@@ -7,7 +7,7 @@ import {
 } from 'utils/firebase';
 
 import { useAppDispatch } from 'store/hooks';
-import { setCurrentUser } from 'store/user/userSlice';
+import { setIsUserSignedIn } from 'store/user/userSlice';
 
 import HomePage from 'pages/HomePage';
 import ShopPage from 'pages/ShopPage';
@@ -35,7 +35,7 @@ const AppWrapper = () => {
   useEffect(() => {
     const unsubcribe = onAuthStateChangedListener((user) => {
       if (user) createUserDocumentFromAuth(user);
-      dispatch(setCurrentUser(user));
+      dispatch(setIsUserSignedIn(user ? true : false));
     });
 
     return unsubcribe;

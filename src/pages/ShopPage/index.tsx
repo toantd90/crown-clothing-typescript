@@ -7,15 +7,16 @@ import Category from 'pages/Category';
 import { getCategoriesAndDocuments } from 'utils/firebase';
 
 import { useAppDispatch } from 'store/hooks';
-import { setCategoriesMap } from 'store/category/categorySlice';
+import { setCategories } from 'store/category/categorySlice';
+import { Category as CategoryType } from 'Category-Types';
 
 const ShopPage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     const getCategoriesMap = async () => {
-      const categoryMap = await getCategoriesAndDocuments();
-      dispatch(setCategoriesMap(categoryMap));
+      const categories = await getCategoriesAndDocuments();
+      dispatch(setCategories(categories as CategoryType[]));
     };
 
     getCategoriesMap();

@@ -1,7 +1,16 @@
-// import { Product } from 'Product-Types';
-
 declare module 'Category-Types' {
+  export type Product = {
+    id: number;
+    name: string;
+    price: number;
+    imageUrl: string;
+  };
+  export type Category = {
+    title: string;
+    items: Product[];
+  };
+
   export type CategoryMap = {
-    [key: string]: Array<Product>;
+    [key: string]: Product[];
   };
 }

@@ -1,30 +1,40 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, createSelector, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from 'store/store';
 
-import { CategoryMap } from 'Category-Types';
+import { Category, CategoryMap } from 'Category-Types';
 
 export interface CategoryState {
-  categoriesMap: CategoryMap;
+  categories: Category[];
 }
 
 const initialState: CategoryState = {
-  categoriesMap: {},
+  categories: [],
 };
 
 export const categorySlice = createSlice({
   name: 'category',
   initialState,
   reducers: {
-    setCategoriesMap: (state, action: PayloadAction<CategoryMap>) => {
-      state.categoriesMap = action.payload;
+    setCategories: (state, action: PayloadAction<Category[]>) => {
+      state.categories = action.payload;
     },
   },
 });
 
-export const { setCategoriesMap } = categorySlice.actions;
+export const { setCategories } = categorySlice.actions;
 
 // selectors
-export const selectCategoryMap = (state: RootState) =>
-  state.category.categoriesMap;
+export const selectCategoryMap = createSelector(
+  (state: RootState) => {
+    console.log('category map selector');
+
+    return state.category.categories.reduce((acc, category) => {
+      const { title, items } = category;
+      acc[title.toLowerCase()] = items;
+      return acc;
+    }, {} as CategoryMap);
+  },
+  (category) => category,
+);
 
 export default categorySlice.reducer;

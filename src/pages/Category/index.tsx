@@ -12,12 +12,15 @@ import styles from './category.module.scss';
 
 const Category = () => {
   const { category } = useParams();
+  console.log('rerender Category component');
+
   const categoriesMap = useAppSelector(selectCategoryMap);
   const [products, setProducts] = useState<Product[]>(
     categoriesMap[category || ''],
   );
 
   useEffect(() => {
+    console.log('useEffect fired');
     setProducts(categoriesMap[category || '']);
   }, [categoriesMap, category]);
 
