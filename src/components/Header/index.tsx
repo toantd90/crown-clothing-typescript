@@ -1,11 +1,9 @@
-import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { signOutAuthUser } from 'utils/firebase';
 
-import { CartContext } from 'contexts/cart';
-
 import { useAppSelector } from 'store/hooks';
 import { selectIsUserSignedIn } from 'store/user/userSlice';
+import { selectIsCartOpen } from 'store/cart/cartSlice';
 
 import { CartIcon, CartDropdown } from 'components';
 
@@ -14,8 +12,7 @@ import styles from './header.module.scss';
 
 const Header = () => {
   const isUserSignedIn = useAppSelector(selectIsUserSignedIn);
-
-  const { isCartOpen } = useContext(CartContext);
+  const isCartOpen = useAppSelector(selectIsCartOpen);
 
   return (
     <div className={styles.header}>

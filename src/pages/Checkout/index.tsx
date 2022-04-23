@@ -1,12 +1,13 @@
-import { useContext } from 'react';
-import { CartContext } from 'contexts/cart';
+import { useAppSelector } from 'store/hooks';
 
 import { CheckoutItem } from 'components';
+import { selectCartItems, selectCartTotal } from 'store/cart/cartSlice';
 
 import styles from './checkout.module.scss';
 
 const Checkout = () => {
-  const { cartItems, cartTotal } = useContext(CartContext);
+  const cartItems = useAppSelector(selectCartItems);
+  const cartTotal = useAppSelector(selectCartTotal);
 
   return (
     <div className={styles.checkoutContainer}>

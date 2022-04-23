@@ -1,6 +1,10 @@
-import { useContext } from 'react';
-import { CartContext } from 'contexts/cart';
-import { CartItem } from 'Product-Types';
+import { useAppDispatch } from 'store/hooks';
+import {
+  addCartItem,
+  removeCartItem,
+  clearCartItem,
+} from 'store/cart/cartSlice';
+import { CartItem } from 'Cart-Types';
 
 import styles from './checkoutItem.module.scss';
 
@@ -9,16 +13,15 @@ type Props = {
 };
 
 const CheckoutItem = ({ cartItem }: Props) => {
-  const { cartItemChange, cartItemRemove } = useContext(CartContext);
+  const dispatch = useAppDispatch();
+
   const { name, quantity, imageUrl, price } = cartItem;
 
-  const handleCardItemChange = (isIncrease: boolean = true) => {
-    cartItemChange(cartItem, isIncrease);
-  };
+  const handleAddCardItem = () => dispatch(addCartItem(cartItem));
 
-  const handleCartItemRemove = () => {
-    cartItemRemove(cartItem);
-  };
+  const handleRemoveCardItem = () => dispatch(removeCartItem(cartItem));
+
+  const handleClearCartItem = () => dispatch(clearCartItem(cartItem));
 
   return (
     <div className={styles.checkoutItemContainer}>
@@ -27,19 +30,16 @@ const CheckoutItem = ({ cartItem }: Props) => {
       </div>
       <span className={styles.name}>{name}</span>
       <span className={styles.quantity}>
-        <div
-          className={styles.arrow}
-          onClick={() => handleCardItemChange(false)}
-        >
+        <div className={styles.arrow} onClick={handleRemoveCardItem}>
           &#10094;
         </div>
         <div className={styles.value}>{quantity}</div>
-        <div className={styles.arrow} onClick={() => handleCardItemChange()}>
+        <div className={styles.arrow} onClick={handleAddCardItem}>
           &#10095;
         </div>
       </span>
       <span className={styles.price}>{price}</span>
-      <div className={styles.removeBtn} onClick={() => handleCartItemRemove()}>
+      <div className={styles.removeBtn} onClick={handleClearCartItem}>
         &#10005;
       </div>
     </div>

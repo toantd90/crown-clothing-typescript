@@ -1,14 +1,20 @@
-import { useContext } from 'react';
+import { useAppDispatch, useAppSelector } from 'store/hooks';
+import {
+  selectCartCount,
+  selectIsCartOpen,
+  setIsCartOpen,
+} from 'store/cart/cartSlice';
 
-import { CartContext } from 'contexts/cart';
 import { ReactComponent as ShoppingBagIcon } from 'assets/shopping-bag.svg';
 
 import styles from './cartIcon.module.scss';
 
 const CartIcon = () => {
-  const { isCartOpen, setIsCartOpen, cartCount } = useContext(CartContext);
+  const dispatch = useAppDispatch();
+  const isCartOpen = useAppSelector(selectIsCartOpen);
+  const cartCount = useAppSelector(selectCartCount);
 
-  const handleOnCartIconClick = () => setIsCartOpen(!isCartOpen);
+  const handleOnCartIconClick = () => dispatch(setIsCartOpen(!isCartOpen));
 
   return (
     <div className={styles.cartIconContainer} onClick={handleOnCartIconClick}>

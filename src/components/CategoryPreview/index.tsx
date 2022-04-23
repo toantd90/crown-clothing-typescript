@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { ProductCard } from 'components';
-import { Product } from 'Product-Types';
+import { Product } from 'Cart-Types';
 
 import styles from './categoryPreview.module.scss';
 

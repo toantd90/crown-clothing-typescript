@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-
-import { CartContext } from 'contexts/cart';
+import { useAppDispatch } from 'store/hooks';
+import { addCartItem } from 'store/cart/cartSlice';
 
 import { Button } from 'components';
 
-import { Product } from 'Product-Types';
+import { Product } from 'Cart-Types';
 
 import styles from './productCard.module.scss';
 
@@ -13,10 +12,11 @@ type Props = {
 };
 
 const ProductCard = ({ product }: Props) => {
-  const { name, price, imageUrl } = product;
-  const { cartItemChange } = useContext(CartContext);
+  const dispatch = useAppDispatch();
 
-  const handleAddProductToCart = () => cartItemChange(product);
+  const { name, price, imageUrl } = product;
+
+  const handleAddProductToCart = () => dispatch(addCartItem(product));
 
   return (
     <div className={styles.productCardContainer}>

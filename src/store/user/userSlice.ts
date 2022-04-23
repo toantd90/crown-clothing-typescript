@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
-import { User } from 'firebase/auth';
+// import { User } from 'firebase/auth';
 import { RootState } from 'store/store';
 
 export interface UserState {

@@ -3,9 +3,10 @@ import logger from 'redux-logger';
 
 import userReducer from './user/userSlice';
 import categoryReducer from './category/categorySlice';
+import cartReducer from './cart/cartSlice';
 
 export const store = configureStore({
-  reducer: { user: userReducer, category: categoryReducer },
+  reducer: { user: userReducer, category: categoryReducer, cart: cartReducer },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
 });
 

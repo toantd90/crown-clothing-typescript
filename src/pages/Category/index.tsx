@@ -6,7 +6,7 @@ import { useAppSelector } from 'store/hooks';
 
 import { ProductCard } from 'components';
 
-import { Product } from 'Product-Types';
+import { Product } from 'Cart-Types';
 
 import styles from './category.module.scss';
 

@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-import { CartItem, Product } from 'Product-Types';
+import { CartItem, Product } from 'Cart-Types';
 
 const handleRemoveCartItem = (
   cartItems: CartItem[],
