@@ -13,6 +13,7 @@ import styles from './header.module.scss';
 const Header = () => {
   const isUserSignedIn = useAppSelector(selectIsUserSignedIn);
   const isCartOpen = useAppSelector(selectIsCartOpen);
+  console.log('Header component isCartOpen: ', isCartOpen);
 
   return (
     <div className={styles.header}>

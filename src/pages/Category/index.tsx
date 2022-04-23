@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { selectCategoryMap } from 'store/category/categorySlice';
+import {
+  selectCategoryMap,
+  selectIsLoading,
+} from 'store/category/categorySlice';
 import { useAppSelector } from 'store/hooks';
 
-import { ProductCard } from 'components';
+import { ProductCard, Spinner } from 'components';
 
 import { Product } from 'Cart-Types';
 
@@ -14,6 +17,7 @@ const Category = () => {
   const { category } = useParams();
 
   const categoriesMap = useAppSelector(selectCategoryMap);
+  const isLoading = useAppSelector(selectIsLoading);
   const [products, setProducts] = useState<Product[]>(
     categoriesMap[category || ''],
   );
@@ -27,12 +31,16 @@ const Category = () => {
       <h2 className={styles.categoryTitle}>
         {category && category.toUpperCase()}
       </h2>
-      <div className={styles.categoryContainer}>
-        {products &&
-          products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className={styles.categoryContainer}>
+          {products &&
+            products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+      )}
     </>
   );
 };

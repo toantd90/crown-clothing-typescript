@@ -1,20 +1,30 @@
-import { selectCategoryMap } from 'store/category/categorySlice';
 import { useAppSelector } from 'store/hooks';
+import {
+  selectCategoryMap,
+  selectIsLoading,
+} from 'store/category/categorySlice';
 
-import { CategoryPreview } from 'components';
+import { CategoryPreview, Spinner } from 'components';
 
 const CategoriesPreview = () => {
   const categoriesMap = useAppSelector(selectCategoryMap);
+  const isLoading = useAppSelector(selectIsLoading);
 
   return (
     <>
-      {Object.keys(categoriesMap).map((title: string) => (
-        <CategoryPreview
-          key={title}
-          title={title}
-          products={categoriesMap[title]}
-        />
-      ))}
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <>
+          {Object.keys(categoriesMap).map((title: string) => (
+            <CategoryPreview
+              key={title}
+              title={title}
+              products={categoriesMap[title]}
+            />
+          ))}
+        </>
+      )}
     </>
   );
 };

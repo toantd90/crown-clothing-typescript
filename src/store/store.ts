@@ -16,6 +16,7 @@ const reducers = combineReducers({
 const persistConfig = {
   key: 'root',
   storage,
+  whitelist: ['cart'],
 };
 
 const persistedReducer = persistReducer(persistConfig, reducers);
@@ -23,6 +24,7 @@ const persistedReducer = persistReducer(persistConfig, reducers);
 export const store = configureStore({
   reducer: persistedReducer,
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger),
+  devTools: process.env.NODE_ENV !== 'production',
 });
 
 export type RootState = ReturnType<typeof store.getState>;
