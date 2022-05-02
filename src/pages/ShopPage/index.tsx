@@ -5,13 +5,13 @@ import CategoriesPreview from 'pages/CategoriesPreview';
 import Category from 'pages/Category';
 
 import { useAppDispatch } from 'store/hooks';
-import { fetchCategoriesAsync } from 'store/category/categorySlice';
+import { fetchCategoriesStart } from 'store/category/slice';
 
 const ShopPage = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    dispatch(fetchCategoriesAsync());
+    dispatch(fetchCategoriesStart());
   }, []);
 
   return (

@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import {
   selectCategoryMap,
   selectIsLoading,
-} from 'store/category/categorySlice';
+} from 'store/category/slice';
 import { useAppSelector } from 'store/hooks';
 
 import { ProductCard, Spinner } from 'components';

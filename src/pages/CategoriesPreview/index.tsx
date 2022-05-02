@@ -2,7 +2,7 @@ import { useAppSelector } from 'store/hooks';
 import {
   selectCategoryMap,
   selectIsLoading,
-} from 'store/category/categorySlice';
+} from 'store/category/slice';
 
 import { CategoryPreview, Spinner } from 'components';
 
