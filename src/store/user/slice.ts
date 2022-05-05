@@ -1,30 +1,30 @@
 import { createSlice, PayloadAction, createSelector } from '@reduxjs/toolkit';
-// import { User } from 'firebase/auth';
+import { User } from 'firebase/auth';
 import { RootState } from 'store/store';
 
 export interface UserState {
-  isUserSignedIn: boolean;
+  currentUser: User | null;
 }
 
 const initialState: UserState = {
-  isUserSignedIn: false,
+  currentUser: null,
 };
 
 export const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    setIsUserSignedIn: (state, action: PayloadAction<boolean>) => {
-      state.isUserSignedIn = action.payload;
+    setCurrentUser: (state, action: PayloadAction<User | null>) => {
+      state.currentUser = action.payload;
     },
   },
 });
 
-export const { setIsUserSignedIn } = userSlice.actions;
+export const { setCurrentUser } = userSlice.actions;
 
 // selectors
-export const selectIsUserSignedIn = createSelector(
-  (state: RootState) => state.user.isUserSignedIn,
+export const selectCurrentUser = createSelector(
+  (state: RootState) => state.user.currentUser,
   (user) => user,
 );
 

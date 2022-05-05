@@ -23,6 +23,7 @@
   },
   "include": [
     "src",
-    "declarations.d.ts"
-, "shop.data.ts"  ]
+    "declarations.d.ts",
+    "react-app.d.ts"
+  ],
 }
