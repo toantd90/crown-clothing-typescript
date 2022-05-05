@@ -1,4 +1,5 @@
 /* PLOP_INJECT_IMPORT */
+import PaymentForm from './PaymentForm';
 import Spinner from './Spinner';
 import DirectoryItem from './DirectoryItem';
 import CheckoutItem from './CheckoutItem';
@@ -17,6 +18,7 @@ import Directory from './Directory';
 export {
   // prettier-ignore
   /* PLOP_INJECT_EXPORT */
+  PaymentForm,
   Spinner,
   Button,
   CheckoutItem,

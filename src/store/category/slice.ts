@@ -20,7 +20,7 @@ export const categorySlice = createSlice({
     fetchCategoriesStart: (state) => {
       state.loading = 'pending';
     },
-    fetchCategoriesSuccess: (state, action) => {
+    fetchCategoriesSuccess: (state, action: PayloadAction<Category[]>) => {
       state.categories = action.payload;
       state.loading = 'succeeded';
     },

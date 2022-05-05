@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Button, CartItem } from 'components';
 
 import { useAppDispatch, useAppSelector } from 'store/hooks';
-import { selectCartItems, setIsCartOpen } from 'store/cart/cartSlice';
+import { selectCartItems, setIsCartOpen } from 'store/cart/slice';
 
 import { CartItem as CarItemType } from 'Cart-Types';
 

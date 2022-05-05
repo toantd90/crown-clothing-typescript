@@ -7,7 +7,7 @@ import {
 } from 'utils/firebase';
 
 import { useAppDispatch } from 'store/hooks';
-import { setIsUserSignedIn } from 'store/user/userSlice';
+import { setIsUserSignedIn } from 'store/user/slice';
 
 import HomePage from 'pages/HomePage';
 import ShopPage from 'pages/ShopPage';

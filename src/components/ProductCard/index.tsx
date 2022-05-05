@@ -1,5 +1,5 @@
 import { useAppDispatch } from 'store/hooks';
-import { addCartItem } from 'store/cart/cartSlice';
+import { addCartItem } from 'store/cart/slice';
 
 import { Button } from 'components';
 

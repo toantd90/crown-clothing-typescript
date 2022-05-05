@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom';
 import { signOutAuthUser } from 'utils/firebase';
 
 import { useAppSelector } from 'store/hooks';
-import { selectIsUserSignedIn } from 'store/user/userSlice';
-import { selectIsCartOpen } from 'store/cart/cartSlice';
+import { selectIsUserSignedIn } from 'store/user/slice';
+import { selectIsCartOpen } from 'store/cart/slice';
 
 import { CartIcon, CartDropdown } from 'components';
 

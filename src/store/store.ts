@@ -5,9 +5,9 @@ import storage from 'redux-persist/lib/storage';
 import createSagaMiddleware from 'redux-saga';
 import { rootSaga } from './saga';
 
-import userReducer from './user/userSlice';
+import userReducer from './user/slice';
 import categoryReducer from './category/slice';
-import cartReducer from './cart/cartSlice';
+import cartReducer from './cart/slice';
 
 const reducers = combineReducers({
   user: userReducer,

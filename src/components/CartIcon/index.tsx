@@ -3,7 +3,7 @@ import {
   selectCartCount,
   selectIsCartOpen,
   setIsCartOpen,
-} from 'store/cart/cartSlice';
+} from 'store/cart/slice';
 
 import { ReactComponent as ShoppingBagIcon } from 'assets/shopping-bag.svg';
 

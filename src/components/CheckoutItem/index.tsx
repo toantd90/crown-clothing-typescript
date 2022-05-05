@@ -3,7 +3,7 @@ import {
   addCartItem,
   removeCartItem,
   clearCartItem,
-} from 'store/cart/cartSlice';
+} from 'store/cart/slice';
 import { CartItem } from 'Cart-Types';
 
 import styles from './checkoutItem.module.scss';

@@ -1,7 +1,7 @@
 import { useAppSelector } from 'store/hooks';
 
-import { CheckoutItem } from 'components';
-import { selectCartItems, selectCartTotal } from 'store/cart/cartSlice';
+import { CheckoutItem, PaymentForm } from 'components';
+import { selectCartItems, selectCartTotal } from 'store/cart/slice';
 
 import styles from './checkout.module.scss';
 
@@ -33,6 +33,7 @@ const Checkout = () => {
       })}
 
       <span className={styles.total}>Total: ${cartTotal}</span>
+      <PaymentForm />
     </div>
   );
 };
