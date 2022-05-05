@@ -5,7 +5,8 @@ type Props = {
   children?: ReactNode;
   buttonType?: 'google' | 'inverted';
   type?: 'button' | 'submit' | 'reset';
-  disabled?: boolean;
+  isLoading?: boolean;
+  className?: string;
   onClick?: () => void;
 };
 
@@ -14,15 +15,22 @@ const BUTTON_TYPE_CLASSES = {
   inverted: styles.inverted,
 };
 
-const Button = ({ children, buttonType, ...rest }: Props) => {
+const Button = ({
+  children,
+  buttonType,
+  isLoading,
+  className,
+  ...rest
+}: Props) => {
   return (
     <button
       className={`${styles.buttonContainer} ${
         buttonType ? BUTTON_TYPE_CLASSES[buttonType] : ''
-      }`}
+      } ${className}`}
+      disabled={isLoading}
       {...rest}
     >
-      {children}
+      {isLoading ? <div className={styles.buttonSpinner} /> : children}
     </button>
   );
 };
