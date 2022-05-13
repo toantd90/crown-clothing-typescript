@@ -1,9 +1,6 @@
+import { memo } from 'react';
 import { useAppDispatch } from 'store/hooks';
-import {
-  addCartItem,
-  removeCartItem,
-  clearCartItem,
-} from 'store/cart/slice';
+import { addCartItem, removeCartItem, clearCartItem } from 'store/cart/slice';
 import { CartItem } from 'Cart-Types';
 
 import styles from './checkoutItem.module.scss';
@@ -12,7 +9,7 @@ type Props = {
   cartItem: CartItem;
 };
 
-const CheckoutItem = ({ cartItem }: Props) => {
+const CheckoutItem = memo(({ cartItem }: Props) => {
   const dispatch = useAppDispatch();
 
   const { name, quantity, imageUrl, price } = cartItem;
@@ -44,6 +41,6 @@ const CheckoutItem = ({ cartItem }: Props) => {
       </div>
     </div>
   );
-};
+});
 
 export default CheckoutItem;

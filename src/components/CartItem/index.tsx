@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import styles from './cartItem.module.scss';
 
 type Props = {
@@ -9,7 +10,7 @@ type Props = {
   };
 };
 
-const CartItem = ({ cartItem }: Props) => {
+const CartItem = memo(({ cartItem }: Props) => {
   const { name, quantity, price, imageUrl } = cartItem;
 
   return (
@@ -23,6 +24,6 @@ const CartItem = ({ cartItem }: Props) => {
       </div>
     </div>
   );
-};
+});
 
 export default CartItem;
